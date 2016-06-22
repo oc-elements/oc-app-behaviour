@@ -30,7 +30,7 @@
       if (!page) {
         window.history.pushState(null, '', '/find');
       }
-      this.page = page || 'find';
+      this.page = page || this.defaultPage;
     },
 
     _pageChanged: function(page) {
@@ -112,9 +112,18 @@
 
     /**
      * The app handle. Used to determine view prefixes.
+     * @returns {String}
      */
     get appHandle() {
       console.warn('App handle not defined');
+    },
+
+    /**
+     * The default app page.
+     * @returns {String}
+     */
+    get defaultPage() {
+      console.warn('Default page not defined');
     }
 
   };
