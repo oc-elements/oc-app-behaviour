@@ -27,10 +27,10 @@
       if (!signedIn) {
         return this.page = 'signin';
       }
-      if (!page) {
-        window.history.pushState(null, '', '/find');
+      if (!page && this.defaultPage.menuItem) {
+        window.history.pushState(null, '', this.defaultPage.menuItem.href);
       }
-      this.page = page || this.defaultPage;
+      this.page = page || this.defaultPage.name;
     },
 
     _pageChanged: function(page) {
@@ -120,7 +120,7 @@
 
     /**
      * The default app page.
-     * @returns {String}
+     * @returns {Page}
      */
     get defaultPage() {
       console.warn('Default page not defined');
