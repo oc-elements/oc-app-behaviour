@@ -73,7 +73,7 @@
     },
 
     _toggleRefreshBtn: function(page, signedIn) {
-      this.$.refreshBtn.hidden = !signedIn || ['signing', 'find'].indexOf(page) > -1;
+      this.$.refreshBtn.hidden = !signedIn || this.refreshablePages.indexOf(page) === -1;
     },
 
     _refresh: function() {
@@ -125,6 +125,14 @@
     get defaultPage() {
       console.warn('Default page not defined');
       return OC.Page();
+    },
+
+    /**
+     * The app pages that can be refreshed.
+     * @returns {String[]}
+     */
+    get refreshablePages() {
+      return [];
     }
 
   };
