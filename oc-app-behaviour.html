@@ -20,7 +20,8 @@
     observers: [
       '_routePageChanged(routeData.page, signedIn)',
       '_toggleRefreshBtn(page, signedIn)',
-      '_setClientId(clientId)'
+      '_setClientId(clientId)',
+      '_refresh(clientId)'
     ],
 
     _routePageChanged: function(page, signedIn) {
@@ -77,7 +78,9 @@
     },
 
     _refresh: function() {
-      this.activeView.refresh();
+      if (this.activeView.refresh) {
+        this.activeView.refresh();
+      }
     },
 
     _computeRefreshBtnClass: function(refreshing) {
